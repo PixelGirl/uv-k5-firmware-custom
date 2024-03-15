@@ -206,16 +206,16 @@ endif
 OBJCOPY = arm-none-eabi-objcopy
 SIZE = arm-none-eabi-size
 
-AUTHOR_STRING := NUNU
+AUTHOR_STRING := Pixel
 # the user might not have/want git installed
 # can set own version string here (max 7 chars)
-ifneq (, $(shell $(WHERE) git))
-	VERSION_STRING := $(shell git describe --tags --exact-match 2>$(NULL_OUTPUT))
-	ifeq (, $(VERSION_STRING))
-    	VERSION_STRING := $(shell git rev-parse --short HEAD)
-	endif
-endif
-#VERSION_STRING := 230930b
+# ifneq (, $(shell $(WHERE) git))
+# 	VERSION_STRING := $(shell git describe --tags --exact-match 2>$(NULL_OUTPUT))
+# 	ifeq (, $(VERSION_STRING))
+#     	VERSION_STRING := $(shell git rev-parse --short HEAD)
+# 	endif
+# endif
+VERSION_STRING := v1.0
 
 
 ASFLAGS = -c -mcpu=cortex-m0
