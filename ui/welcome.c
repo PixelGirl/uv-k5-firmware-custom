@@ -18,7 +18,6 @@
  */
 
 #include <string.h>
-
 #include "bitmaps.h"
 #include "driver/eeprom.h"
 #include "driver/st7565.h"
@@ -32,8 +31,7 @@
 #include "ui/status.h"
 #include "version.h"
 
-void UI_DisplayReleaseKeys(void)
-{
+void UI_DisplayReleaseKeys(void){
 	memset(gStatusLine,  0, sizeof(gStatusLine));
 	memset(gFrameBuffer, 0, sizeof(gFrameBuffer));
 
@@ -49,30 +47,22 @@ void UI_DisplayWelcomeBitmap(void){
 	ST7565_DrawFullScreenBitmap(BITMAP_WELCOME);
 }
 
-void UI_DisplayWelcome(void)
-{
+void UI_DisplayWelcome(void){
 	char WelcomeString0[16];
 	char WelcomeString1[16];
 	
 	memset(gStatusLine,  0, sizeof(gStatusLine));
 	memset(gFrameBuffer, 0, sizeof(gFrameBuffer));
 
-	if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_NONE)
-	{
+	if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_NONE){
 		ST7565_BlitFullScreen();
-	}
-	else
-	if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_FULL_SCREEN)
-	{
+	}else if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_FULL_SCREEN){
 		ST7565_FillScreen(0xFF);
-	}
-	else
-	{
+	}else{
 		memset(WelcomeString0, 0, sizeof(WelcomeString0));
 		memset(WelcomeString1, 0, sizeof(WelcomeString1));
 
-		if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_VOLTAGE)
-		{
+		if (gEeprom.POWER_ON_DISPLAY_MODE == POWER_ON_DISPLAY_MODE_VOLTAGE){
 			strcpy(WelcomeString0, "VOLTAGE");
 			sprintf(WelcomeString1, "%u.%02uV %u%%",
 				gBatteryVoltageAverage / 100,
@@ -85,9 +75,7 @@ void UI_DisplayWelcome(void)
 			UI_PrintStringSmall(Version, 0, 128, 6);
 			ST7565_BlitStatusLine();  // blank status line
 			ST7565_BlitFullScreen();
-		}
-		else
-		{
+		}else{
 			// EEPROM_ReadBuffer(0x0EB0, WelcomeString0, 16);
 			// EEPROM_ReadBuffer(0x0EC0, WelcomeString1, 16);
 			UI_DisplayWelcomeBitmap();
