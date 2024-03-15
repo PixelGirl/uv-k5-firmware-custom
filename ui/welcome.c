@@ -78,19 +78,26 @@ void UI_DisplayWelcome(void)
 				gBatteryVoltageAverage / 100,
 				gBatteryVoltageAverage % 100,
 				BATTERY_VoltsToPercent(gBatteryVoltageAverage));
+			
+			UI_PrintString(WelcomeString0, 0, 127, 0, 10);
+			UI_PrintString(WelcomeString1, 0, 127, 2, 10);
+
+			UI_PrintStringSmall(Version, 0, 128, 6);
+			ST7565_BlitStatusLine();  // blank status line
+			ST7565_BlitFullScreen();
 		}
 		else
 		{
-			EEPROM_ReadBuffer(0x0EB0, WelcomeString0, 16);
-			EEPROM_ReadBuffer(0x0EC0, WelcomeString1, 16);
+			// EEPROM_ReadBuffer(0x0EB0, WelcomeString0, 16);
+			// EEPROM_ReadBuffer(0x0EC0, WelcomeString1, 16);
+			UI_DisplayWelcomeBitmap();
 		}
 
-		UI_PrintString(WelcomeString0, 0, 127, 0, 10);
-		UI_PrintString(WelcomeString1, 0, 127, 2, 10);
-		UI_PrintStringSmall(Version, 0, 128, 6);
+		// UI_PrintString(WelcomeString0, 0, 127, 0, 10);
+		// UI_PrintString(WelcomeString1, 0, 127, 2, 10);
+		// UI_PrintStringSmall(Version, 0, 128, 6);
 
-		ST7565_BlitStatusLine();  // blank status line
-		ST7565_BlitFullScreen();
+		// ST7565_BlitStatusLine();  // blank status line
+		// ST7565_BlitFullScreen();
 	}
 }
-
