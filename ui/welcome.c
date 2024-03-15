@@ -19,8 +19,10 @@
 
 #include <string.h>
 
+#include "bitmaps.h"
 #include "driver/eeprom.h"
 #include "driver/st7565.h"
+#include "driver/system.h"
 #include "external/printf/printf.h"
 #include "helper/battery.h"
 #include "settings.h"
@@ -40,6 +42,11 @@ void UI_DisplayReleaseKeys(void)
 
 	ST7565_BlitStatusLine();  // blank status line
 	ST7565_BlitFullScreen();
+}
+
+void UI_DisplayWelcomeBitmap(void){
+	ST7565_BlitFullScreen();
+	ST7565_DrawFullScreenBitmap(BITMAP_WELCOME);
 }
 
 void UI_DisplayWelcome(void)

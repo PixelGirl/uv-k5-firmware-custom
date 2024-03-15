@@ -21,6 +21,7 @@
 #define UI_WELCOME_H
 
 void UI_DisplayReleaseKeys(void);
+void UI_DisplayWelcomeBitmap(void);
 void UI_DisplayWelcome(void);
 
 #endif
