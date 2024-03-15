@@ -30,6 +30,7 @@ extern uint8_t gStatusLine[128];
 extern uint8_t gFrameBuffer[7][128];
 
 void ST7565_DrawLine(const unsigned int Column, const unsigned int Line, const unsigned int Size, const uint8_t *pBitmap);
+void ST7565_DrawFullScreenBitmap(const uint8_t *pBitmap);
 void ST7565_BlitFullScreen(void);
 void ST7565_BlitStatusLine(void);
 void ST7565_FillScreen(uint8_t Value);
