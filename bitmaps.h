@@ -50,3 +50,4 @@ extern const uint8_t BITMAP_compand[6];
 	extern const uint8_t BITMAP_NEWMSG[8];
 #endif
 
+extern const uint8_t BITMAP_WELCOME[1028];
